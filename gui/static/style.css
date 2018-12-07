@@ -1,0 +1,104 @@
+body {
+    background-image: url("/static/background.jpg");
+}
+
+p {
+	color: #3498DB;
+	font-family: Tahoma, Arial, sans-serif;
+	font-style: normal;
+	font-size: 1.25em; /* 16px/16=1em */
+	font-weight: bold;
+}
+
+.p1 {
+	font-size: 1.20em; /* 16px/16=1em */
+	font-weight: normal;
+}
+
+
+table {
+	border-collapse: collapse;
+	text-align: center;
+	padding: 0px;
+	border-spacing: 0px;
+	width: 100%;
+}
+
+.tr1 {
+	height: 100px;
+}
+
+.tr2 {
+	height: 68px;
+}
+
+td {
+	border: 0px solid #FFFFFF;
+	text-align: center;
+	padding: 0px;
+	border-spacing: 0px;
+	vertical-align: middle;
+}
+
+.td1 {
+	vertical-align: top;
+}
+
+.td2 {
+	border: 1px solid #3498DB;
+}
+
+.im1 {
+	height: 100px;
+	weight: 100px;
+	cursor: pointer;
+}
+
+.im2 {
+	height: 100px;
+	weight: 100px;
+}
+
+button {
+	background-color: #3498DB;
+	border: none;
+	color: white;
+	padding: 50px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 10px;
+	margin: 0px 0px;
+	cursor: pointer;
+	border-radius: 50%;
+}
+
+.slider {
+    -webkit-appearance: none;  /* Override default CSS styles */
+    width: 95%; /* Full-width */
+    height: 9px; /* Specified height */
+    border: 2px solid #3498DB;
+	border-radius: 5px;
+    background: #d3d3d3; /* Grey background */
+    outline: none; /* Remove outline */
+    opacity: 1; /* Set transparency (for mouse-over effects on hover) */
+    -webkit-transition: .2s; /* 0.2 seconds transition on hover */
+    transition: opacity .2s;
+}
+
+/* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */ 
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none; /* Override default look */
+    appearance: none;
+    width: 20px; /* Set a specific slider handle width */
+    height: 35px; /* Slider handle height */
+    border-radius: 50%;
+	background: #3498DB; /* background: url('contrasticon.png'); */
+    cursor: pointer; /* Cursor on hover */
+}
+
+/**/
+
+/*
+Comment
+*/

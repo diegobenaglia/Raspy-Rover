@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Raspy  Rover</title>
+	<link rel="stylesheet" href="/static/style.css" type="text/css" media="screen"/>
+	<link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+	<script src="/static/script.js"></script>
+</head>
+
+<body>
+
+	<!-- Tabella per intestazione pagina -->
+	<table>
+		<tr>
+			<td><img alt="logoRoversx" src="/static/logoRoversx.png"></td>
+			<td><img style="width: 400px; height: 170px;" alt="titolo" src="/static/titolo.png"></td>
+			<td><img alt="logoRoverdx" src="/static/logoRoverdx.png"></td>
+		</tr>
+	</table>
+
+<br>
+	
+	<!-- Tabella per pannello guida, Video e pannello comandi -->
+	<table>
+		<tr>
+			<!-- Cella per il comando di guida -->
+			<td class ="td1" style="width: 300px">
+				<table>
+				<caption><p>Drive Command</p></caption>
+					<tr class ="tr1">
+						<td></td>
+						<td><img class ="im1" alt="avanti" src="/static/avanti.png" onmousedown="mouseDownAvanti()" onmouseup="mouseUp()"></td>
+						<td></td>
+					</tr>
+					<tr class ="tr1">
+						<td><img class ="im1" alt="sinistra" src="/static/sinistra.png" onmousedown="mouseDownGiraSx()" onmouseup="mouseUp()"></td>
+						<td></td>
+						<td><img class ="im1" alt="destra" src="/static/destra.png" onmousedown="mouseDownGiraDx()" onmouseup="mouseUp()"></td>
+					</tr>
+					<tr class ="tr1">
+						<td></td>
+						<td><img class ="im1" alt="indietro" src="/static/indietro.png" onmousedown="mouseDownIndietro()" onmouseup="mouseUp()"></td>
+						<td></td>
+					</tr>
+					<tr class ="tr1">
+						<td colspan=3><input type="range" min="1" max="100" value="50" class="slider" id="myRange"></td>
+					</tr>
+					<tr class ="tr1">
+						<td colspan=3><p>Velocità: <span id="velocity"></span></p></td>
+					</tr>				
+				</table>
+			</td>
+			
+			<!-- Cella per il live steaming -->
+			<td class ="td1" style="width: 680px">
+				<table>
+					<caption><p>Video Stream</p></caption>
+					<tr class ="tr1">
+						<td><img id="video" src="/static/live.png"></td>
+					</tr>
+				</table>
+			</td>
+			
+			<!-- Cella per le info di sistema -->
+			<td class ="td1" style="width: 550px">
+				<table>
+					<caption><p>System Information</p></caption>
+					<tr class ="tr2">
+						<td class= "td2" style="width: 200px"><p>Data e Ora</p></td>
+						<td class= "td2"><p class ="p1" id="date">...</p></td>
+					</tr>
+					<tr class ="tr2">
+						<td class= "td2"><p>Temperatura CPU</p></td>
+						<td class= "td2"><p class ="p1" id="tempCPU">...</p></td>
+					</tr>
+					<tr class ="tr2">
+						<td class= "td2"><p>Versione OS</p></td>
+						<td class= "td2"><p class ="p1" id="ver">...</p></td>
+					</tr>
+					<tr class ="tr2">
+						<td class= "td2"><p>Rete WiFi</p></td>
+						<td class= "td2"><p class ="p1" id="ESSID">...</p></td>
+					</tr>
+					<tr class ="tr2">
+						<td class= "td2"><p>Link Quality</p></td>
+						<td class= "td2"><p class ="p1" id="quality">...</p></td>
+					</tr>
+					<tr class ="tr2">
+						<td class= "td2"><p>Signal level</p></td>
+						<td class= "td2"><p class ="p1" id="level">...</p></td>
+					</tr>
+					<tr class ="tr2">
+						<td class= "td2"><p>Disco utilizzato</p></td>
+						<td class= "td2"><p class ="p1" id="disk">...</p></td>
+					</tr>
+				</table>
+			</td>
+			
+			<!-- Cella per distanziare gli altri comandi -->
+			<td style="width: 20px"></td>
+
+			<!-- Cella per gli altri comandi -->
+			<td class ="td1">
+				<table>
+				<caption><p>Others Command</p></caption>
+					<tr class ="tr1">
+						<td style="width: 100px"><img class ="im1" alt="scattafoto" src="/static/scattafoto.png" onclick="ScattaFoto()"></td>
+						<td><p>Take a picture</p></td>
+					</tr>
+					<tr class ="tr1">
+						<td style="width: 100px"><img class ="im1" id="lightbulb" alt="light" src="/static/light.png" onclick="Light()"></td>
+						<td><p>On/Off Light</p></td>
+					</tr>
+					<tr class ="tr1">
+						<td style="width: 100px"><img class ="im1" id="film" alt="video" src="/static/film.png" onclick="Video()"></td>
+						<td><p>On/Off Camera</p></td>
+					</tr>
+					<tr class ="tr1">
+						<td style="width: 100px"><img class ="im1" id="sysinfo" alt="sysinfo" src="/static/systeminfo.png" onclick="Sysinfo()"></td>
+						<td><p>Query System Info</p></td>
+					</tr>
+				</table>
+			</td>
+		
+		</tr>
+	</table>
+</body>
+</html>
