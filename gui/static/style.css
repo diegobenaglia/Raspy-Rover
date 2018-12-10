@@ -59,6 +59,12 @@ td {
 	weight: 100px;
 }
 
+.im3 {
+	height: 50px;
+	weight: 50px;
+	cursor: pointer;
+}
+
 button {
 	background-color: #3498DB;
 	border: none;
@@ -96,9 +102,3 @@ button {
 	background: #3498DB; /* background: url('contrasticon.png'); */
     cursor: pointer; /* Cursor on hover */
 }
-
-/**/
-
-/*
-Comment
-*/

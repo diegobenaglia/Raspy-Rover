@@ -3,8 +3,8 @@
 
 <head>
 	<title>Raspy  Rover</title>
-	<link rel="stylesheet" href="/static/style.css" type="text/css" media="screen"/>
-	<link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+	<link rel="stylesheet" href="/static/style.css" type="text/css" media="screen"></link>
+	<link rel="shortcut icon" href="/static/favicon.ico"></link>
 	<script src="/static/script.js"></script>
 </head>
 
@@ -13,9 +13,10 @@
 	<!-- Tabella per intestazione pagina -->
 	<table>
 		<tr>
-			<td><img alt="logoRoversx" src="/static/logoRoversx.png"></td>
-			<td><img style="width: 400px; height: 170px;" alt="titolo" src="/static/titolo.png"></td>
-			<td><img alt="logoRoverdx" src="/static/logoRoverdx.png"></td>
+			<td><img style="width: 100px; height: 114px;" alt="logoRoversx" src="/static/logoRoversx.png"></td>
+			<!-- <td><img style="width: 200px; height: 85px;" alt="titolo" src="/static/titolo.png"></td> -->
+			<td><img alt="titolo" src="/static/titolo2.png"></td>
+			<td><img style="width: 100px; height: 114px;" alt="logoRoverdx" src="/static/logoRoverdx.png"></td>
 		</tr>
 	</table>
 
@@ -46,14 +47,14 @@
 					<tr class ="tr1">
 						<td colspan=3><input type="range" min="1" max="100" value="50" class="slider" id="myRange"></td>
 					</tr>
-					<tr class ="tr1">
+					<tr style="height: 80px">
 						<td colspan=3><p>Velocità: <span id="velocity"></span></p></td>
 					</tr>				
 				</table>
 			</td>
 			
-			<!-- Cella per il live steaming -->
-			<td class ="td1" style="width: 680px">
+			<!-- Cella per il live streaming -->
+			<td class ="td1" style="width: 660px">
 				<table>
 					<caption><p>Video Stream</p></caption>
 					<tr class ="tr1">
@@ -62,6 +63,25 @@
 				</table>
 			</td>
 			
+			<!-- Cella per il PAN -->
+			<td class ="td1" style="width: 50px; height: 480px">
+				<table>
+					<caption><p>&nbsp;</p></caption>
+					<tr>
+						<td><img class ="im3" id="arrowup" src="/static/arrow_up.png"></td>
+					</tr>
+					<tr style="height: 380px">
+						<td><p>PAN</p></td>					
+					</tr>
+					<tr>
+						<td><img class ="im3" id="arrowdown" src="/static/arrow_down.png"></td>
+					</tr>
+				</table>
+			</td>
+			
+			<!-- Cella per distanziare le info di sistema -->
+			<td style="width: 20px"></td>
+
 			<!-- Cella per le info di sistema -->
 			<td class ="td1" style="width: 550px">
 				<table>
@@ -122,8 +142,30 @@
 					</tr>
 				</table>
 			</td>
-		
 		</tr>
-	</table>
+		<tr style="height: 50px">
+			<!-- Cella sotto al comando di guida -->
+			<td class ="td1" style="width: 300px">
+			</td>
+			
+			<!-- Cella per il TILT -->
+			<td class ="td1" style="width: 658px">
+				<table>
+					<tr>
+						<td style="width: 50px">
+							<img class ="im3" id="arrowleft" src="/static/arrow_left.png">
+						</td>
+						<td>
+							<p>TILT</p>
+						</td>
+						<td style="width: 50px">
+							<img class ="im3" id="arrowright" src="/static/arrow_right.png">
+						</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+		
+</table>
 </body>
 </html>

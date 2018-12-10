@@ -1,3 +1,6 @@
+#v.7.1 17/11/2018
+#----------------
+
 from flask import Flask, render_template, request, jsonify
 import RPi.GPIO as GPIO
 from time import sleep
@@ -22,44 +25,61 @@ app = Flask(__name__, static_url_path='/static')		#definisce la path della sotto
 
 @app.route('/')
 def index():
-   	return render_template("index.html")
+	return render_template("index.html")				#definisco la homepath e la pagina HTML da caricare
 
+@app.route('/picture')
+def picture():
+	return render_template("picture.html")				#definisco la pagina HTML da caricare per ScattaFoto
+	
 @app.route('/avanti')
 def avanti():
-	velocita = request.args.get('velocita', default = '50', type = float)
-	go_avanti(velocita)
-	return "ok"
+	velocita = request.args.get('velocita', default = '50', type = float)		#acquisisco la velocita dallo slider. velocita=DutyCycle
+	ava_dx.start(velocita)														#conversione velocità
+	ava_sx.start(velocita)														#il duty cycle minimo per muovere la ruota è 25
+	return "ok"																	#il range selezionabile va da 1 a 100, e si calcola il rapporto in Script.js
 
 @app.route('/indietro')
 def indietro():
 	velocita = request.args.get('velocita', default = '50', type = float)
-	go_indietro(velocita)
+	ind_dx.start(velocita)
+	ind_sx.start(velocita)
 	return "ok"
 
 @app.route('/girasx')
 def girasx():
-	go_girasx()
+	ava_dx.start(40)
+	ind_sx.start(40)
 	return "ok"
 
 @app.route('/giradx')
 def giradx():
-	go_giradx()
+	ava_sx.start(40)
+	ind_dx.start(40)
 	return "ok"
 
 @app.route('/stop')
 def stop():
-	go_stop()
+	ava_dx.stop()
+	ava_sx.stop()
+	ind_dx.stop()
+	ind_sx.stop()
 	return "ok"
 
-@app.route('/scattafoto')
-def scattafoto():
-	go_scattafoto()
-	return "foto fatta"
+# @app.route('/scattafoto')
+# def scattafoto():
+	# go_scattafoto()
+	# return "foto fatta"
 
 @app.route('/light')
 def light():
-	stato = go_light()
-	return stato
+	stato = GPIO.input(17)
+	if stato == 0:
+		GPIO.output(17, 1)
+		light = "on"
+	else:
+		GPIO.output(17, 0)
+		light = "off"
+	return light	
 
 @app.route('/sysinfo')
 def sysinfo():
@@ -82,42 +102,9 @@ def sysinfo():
 	disk = d.decode('utf-8')
 	# Scrivo l'array
 	info = [data[:-1], temp[5:-1], ver[12:-1], essid[16:-1], signal[14:17]+"%", signal[20:23]+"%", disk[5:9]]
-	return jsonify(info)
-		
-def go_avanti(velocita):
-	ava_dx.start(velocita)
-	ava_sx.start(velocita)
-
-def go_indietro(velocita):
-    ind_dx.start(velocita)
-    ind_sx.start(velocita)
-
-def go_girasx():
-	ava_dx.start(60)
-	ind_sx.start(60)
-
-def go_giradx():
-	ava_sx.start(60)
-	ind_dx.start(60)
-
-def go_stop():
-	ava_dx.stop()
-	ava_sx.stop()
-	ind_dx.stop()
-	ind_sx.stop()
-
-def go_light():
-	stato = GPIO.input(17)
-	if stato == 0:
-		GPIO.output(17, 1)
-		light = "on"
-	else:
-		GPIO.output(17, 0)
-		light = "off"
-	return light
-	
+	return jsonify(info) 		#creo un JSON per poterlo inviare, l'array (list) non può essere inviato
 
 if __name__ == '__main__':
-   app.run(host = "0.0.0.0", port = 2802, debug = True)
+	app.run(host = "0.0.0.0", port = 2802, debug = True)
 
 GPIO.cleanup()
